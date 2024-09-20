@@ -1,7 +1,7 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
-
+import { useRouter } from 'next/router'
 import { api } from "~/utils/api";
 
 export default function Home() {
@@ -62,11 +62,20 @@ function AuthShowcase() {
     undefined, // no input
     { enabled: sessionData?.user !== undefined }
   );
-
+  const router = useRouter()
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       <p className="text-center text-2xl text-white">
-        {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
+        { <img onClick={() => {
+              // @ts-ignore
+        if (document.startViewTransition) {
+          //@ts-ignore
+          document.startViewTransition()
+        }
+
+          router.push("/hello")
+        }
+        } className="duration-[5000ms]"  style={{viewTransitionName:"hero"}} src="https://dsrpvwvfgjiil.cloudfront.net/iv_logo_black.png"/>}
         {secretMessage && <span> - {secretMessage}</span>}
       </p>
       <button
