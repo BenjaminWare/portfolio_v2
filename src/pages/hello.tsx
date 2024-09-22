@@ -66,9 +66,9 @@ export default function Hello(props: {
   return (
     <>
        <img onClick={() => {
-              // @ts-ignore
+              // @ts-expect-error
         if (document.startViewTransition) {
-          //@ts-ignore
+          // @ts-expect-error
           document.startViewTransition()
         }
 

@@ -67,9 +67,9 @@ function AuthShowcase() {
     <div className="flex flex-col items-center justify-center gap-4">
       <p className="text-center text-2xl text-white">
         { <img onClick={() => {
-              // @ts-ignore
+             // @ts-expect-error
         if (document.startViewTransition) {
-          //@ts-ignore
+          // @ts-expect-error
           document.startViewTransition()
         }
 
